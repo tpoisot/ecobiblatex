@@ -99,7 +99,60 @@
        {\finalandcomma}
        {}%
      \andothersdelim\bibstring[\emph]{andothers}}
-    {}}
+    {}%
+}
 
+\DeclareFieldFormat[incollection]{booktitle}{\emph{#1}}
+
+\renewbibmacro*{publisher+location+date}{%
+  \printlist{publisher}%
+  \newunit
+  \printlist{location}%
+  \newunit
+  \printfield{edition}%
+  \newunit
+}
+
+\DeclareBibliographyDriver{incollection}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\labelnamepunct}\newblock
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit
+  \usebibmacro{title}
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \newunit
+  \usebibmacro{bybookauthor}%
+  \newunit\newblock
+  \printfield{booktitle}\addspace%
+  \printtext[parens]{%
+   \usebibmacro{editorstrg}%
+   \addspace%
+   \printnames[byeditor]{editor}%
+   \clearname{editor}%
+  }%
+  \newunit\newblock
+  \printfield{volumes}%
+  \newunit\newblock
+  \usebibmacro{series+number}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \usebibmacro{publisher+location+date}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}%
+}
+
+\renewcommand*\finalnamedelim{\multinamedelim}
+\renewcommand*\mkbibnameaffix[1]{\addcomma\space#1}
 
 \endinput
