@@ -1,6 +1,20 @@
 ￼￼\ProvidesFile{ecologyletters.bbx}[biblatex style for Ecology Letters]
 
-
+\RequireBibliographyStyle{standard}
 \RequireBibliographyStyle{authoryear-comp}
+
+\DeclareFieldFormat[article,inbook,incollection,inproceedings,patent,thesis,unpublished]{title}{#1\isdot}
+\DeclareFieldFormat{pages}{#1}
+
+\ExecuteBibliographyOptions
+  {
+    doi          = false , 
+    eprint       = false ,
+    firstinits   = true  ,
+    isbn         = false ,
+    maxnames     = 6     ,
+    maxcitenames = 2     ,
+    url          = false
+  }
 
 \endinput

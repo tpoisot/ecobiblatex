@@ -1,19 +1,20 @@
-%%This is a very basic article template.
-%%There is just one section and two subsections.
 \documentclass{article}
+
+\usepackage[bibstyle=ecologyletters/ecologyletters]{biblatex}
+\bibliography{library}
 
 \begin{document}
 
+\section*{EcoBib\LaTeX test file}
 
-\section{Title}
+This is a book as \texttt{parencite} \parencite{Darwin1859}, and as \texttt{textcite}
+\textcite{Elton1927}.
 
-\subsection{Subtitle}
+This is a paper as \texttt{parencite} \parencite{Holt1996}, and as \texttt{textcite}
+\textcite{Anderson2011}.
 
-Plain text.
+This is a citation command with two papers by the same author \parencite{Tuomisto2010,Tuomisto2011}.
 
-\subsection{Another subtitle}
-
-More plain text.
-
+\printbibliography
 
 \end{document}
