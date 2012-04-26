@@ -15,6 +15,9 @@
 
 \renewcommand*{\finalnamedelim}{\addspace\&\space}
 
+\DeclareNameAlias{sortname}{last-first}
+\renewcommand*{\mkbibnamefirst}[1]{{\let~\,#1}}
+
 \ExecuteBibliographyOptions
   {
     doi          = false , 
