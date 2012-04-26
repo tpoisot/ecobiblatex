@@ -3,9 +3,13 @@
 A collaborative effort to provide biblatex files for most ecological journals.
 
 [Biblatex](https://github.com/plk/biblatex) is a set of LaTeX macros to handle the printing of citations and references, designed to work with [biber](http://biblatex-biber.sourceforge.net/).
-While it's really impressive and easy to use, there are not a lot of citation styles currently available, and this project aims to provide some for the most common ecological journals. 
+While it's really impressive and easy to use, there are not a lot of citation styles currently available, and this project aims to provide some for the most common ecological journals.
+
+The list below indicates which styles are implemented in the current release.
+The link refers to the instruction for authors pages.
+However, the correct format was taken from the list of references in a PDF of the latest issue at the time of the commit.  
 
 ## Styles currently implemented
 
-[*Ecol. Lett.*](http://bit.ly/IdEIY5) - work in progress
-[*Glob. Ecol. Biogeogr.*](http://bit.ly/JoUgbk) - work in progress
+[*Ecol. Lett.*](http://bit.ly/IdEIY5) - nearly there    
+[*Glob. Ecol. Biogeogr.*](http://bit.ly/JoUgbk) - ```article``` type only       
