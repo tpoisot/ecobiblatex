@@ -1,23 +1,10 @@
 ￼￼\ProvidesFile{ecologyletters.bbx}[biblatex style for Ecology Letters]
 
+%% We build on the original author-year comp
 \RequireBibliographyStyle{standard}
 \RequireBibliographyStyle{authoryear-comp}
 
-\AtEveryBibitem{%
-  \clearfield{day}%
-  \clearfield{month}%
-  \clearfield{endday}%
-  \clearfield{endmonth}%
-}
-
-\DeclareFieldFormat[article,inbook,incollection,inproceedings,patent,thesis,unpublished]{title}{#1\isdot}
-\DeclareFieldFormat{pages}{#1}
-
-\renewcommand*{\finalnamedelim}{\addspace\&\space}
-
-\DeclareNameAlias{sortname}{last-first}
-\renewcommand*{\mkbibnamefirst}[1]{{\let~\,#1}}
-
+%% General options to match the ELE requirements
 \ExecuteBibliographyOptions
   {
     doi          = false , 
@@ -32,6 +19,30 @@
     dashed       = false ,
     sorting      = nyt
   }
+
+%% Only the year is important
+\AtEveryBibitem{%
+  \clearfield{day}%
+  \clearfield{month}%
+  \clearfield{endday}%
+  \clearfield{endmonth}%
+}
+
+%% Titles are in upright, no quotes
+\DeclareFieldFormat[article,inbook,incollection,inproceedings,patent,thesis,unpublished]{title}{#1\isdot}
+
+%% Articles have no page number indication
+\DeclareFieldFormat[article]{pages}{#1}
+
+%% Last author is separated by an ampersand
+\renewcommand*{\finalnamedelim}{\addspace\&\space}
+
+%% Authors are Name, F.S.
+\DeclareNameAlias{sortname}{last-first}
+
+%% The initials are separated by a thin space, as per Bringhurst
+\renewcommand*{\mkbibnamefirst}[1]{{\let~\,#1}}
+
 
 \DeclareNameFormat{default}{%
   \renewcommand*{\multinamedelim}{\addsemicolon\addspace}%
@@ -76,10 +87,6 @@
   \printfield{volume}%
   \setunit*{\addspace}%
   \printfield{eid}%
-}
-
-\renewbibmacro*{date}{%
-  \printfield{year}
 }
 
 \renewbibmacro*{name:andothers}{
