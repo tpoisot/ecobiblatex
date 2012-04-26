@@ -7,4 +7,4 @@ While it's really impressive and easy to use, there are not a lot of citation st
 
 ## Styles currently implemented
 
-[*Ecology Letters*](http://onlinelibrary.wiley.com/journal/10.1111/(ISSN)1461-0248/homepage/ForAuthors.html) - work in progress
+[*Ecology Letters*](http://bit.ly/IdEIY5) - work in progress
