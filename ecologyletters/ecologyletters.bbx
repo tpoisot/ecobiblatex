@@ -3,6 +3,13 @@
 \RequireBibliographyStyle{standard}
 \RequireBibliographyStyle{authoryear-comp}
 
+\AtEveryBibitem{%
+  \clearfield{day}%
+  \clearfield{month}%
+  \clearfield{endday}%
+  \clearfield{endmonth}%
+}
+
 \DeclareFieldFormat[article,inbook,incollection,inproceedings,patent,thesis,unpublished]{title}{#1\isdot}
 \DeclareFieldFormat{pages}{#1}
 
@@ -12,9 +19,75 @@
     eprint       = false ,
     firstinits   = true  ,
     isbn         = false ,
-    maxnames     = 6     ,
     maxcitenames = 2     ,
-    url          = false
+    mincitenames = 1     ,
+    maxbibnames  = 7     ,
+	minbibnames  = 6     ,
+    url          = false ,
+    dashed       = false ,
+    sorting      = nyt
   }
+
+\DeclareNameFormat{default}{%
+  \renewcommand*{\multinamedelim}{\addsemicolon\addspace}%
+  \usebibmacro{name:last-first}{#1}{#4}{#5}{#7}%
+  \usebibmacro{name:andothers}%
+}
+
+\DeclareBibliographyDriver{article}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{bytranslator+others}%
+  \newunit\newblock
+  \printfield{version}%
+  \newunit\newblock%
+  \usebibmacro{journal+issuetitle}%
+  \newunit
+  \usebibmacro{byeditor+others}%
+  \newunit
+  \usebibmacro{note+pages}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}}
+
+\renewbibmacro*{journal+issuetitle}{%
+  \usebibmacro{journal},%
+  \setunit*{\addspace}%
+  \usebibmacro{volume+number+eid}%
+  \newunit
+}
+
+\renewbibmacro*{volume+number+eid}{%
+  \printfield{volume}%
+  \setunit*{\addspace}%
+  \printfield{eid}%
+}
+
+\renewbibmacro*{date}{%
+  \printfield{year}
+}
+
+\renewbibmacro*{name:andothers}{
+  \ifboolexpr{
+    test {\ifnumequal{\value{listcount}}{\value{liststop}}}
+    and
+    test \ifmorenames
+  }
+    {\ifnumgreater{\value{liststop}}{1}
+       {\finalandcomma}
+       {}%
+     \andothersdelim\bibstring[\emph]{andothers}}
+    {}}
+
 
 \endinput
