@@ -7,4 +7,5 @@ While it's really impressive and easy to use, there are not a lot of citation st
 
 ## Styles currently implemented
 
-[*Ecology Letters*](http://bit.ly/IdEIY5) - work in progress
+[*Ecol. Lett.*](http://bit.ly/IdEIY5) - work in progress
+[*Glob. Ecol. Biogeogr.*](http://bit.ly/JoUgbk) - work in progress
