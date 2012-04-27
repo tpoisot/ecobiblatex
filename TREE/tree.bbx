@@ -1,1 +1,33 @@
-tree
+￼￼\ProvidesFile{tree.bbx}[biblatex style for Trends in Ecology and Evolution]
+
+%% We build on the original author-year comp
+\RequireBibliographyStyle{standard}
+\RequireBibliographyStyle{numeric-comp}
+
+%% General options to match the ELE requirements
+\ExecuteBibliographyOptions
+  {
+    doi          = false , 
+    eprint       = false ,
+    firstinits   = true  ,
+    isbn         = false ,
+    maxnames     = 2     ,
+    minnames     = 1     ,
+    url          = false ,
+    dashed       = false ,
+    sorting      = none
+  }
+
+%% Only the year is important
+\AtEveryBibitem{%
+  \clearfield{day}%
+  \clearfield{month}%
+  \clearfield{endday}%
+  \clearfield{endmonth}%
+}
+
+%% References are not spaced in the bibliography
+\setlength{\bibitemsep}{0px}%
+\setlength{\itemsep}{\bibitemsep}%
+
+\endinput
