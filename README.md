@@ -11,5 +11,7 @@ However, the correct format was taken from the list of references in a PDF of th
 
 ## Styles currently implemented
 
-[*Ecol. Lett.*](http://bit.ly/IdEIY5) - nearly there    
-[*Glob. Ecol. Biogeogr.*](http://bit.ly/JoUgbk) - ```article``` type only       
+[*Ecol. Lett.*](http://bit.ly/IdEIY5)       
+[*Glob. Ecol. Biogeogr.*](http://bit.ly/JoUgbk)   
+[*Trends Ecol. Evol.*](http://bit.ly/ItbUrh) - in progress
+*Am. Nat.* - coming soon                

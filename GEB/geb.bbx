@@ -13,8 +13,6 @@
     isbn         = false ,
     maxcitenames = 2     ,
     mincitenames = 1     ,
-    maxbibnames  = 7     ,
-	minbibnames  = 6     ,
     url          = false ,
     dashed       = false ,
     sorting      = nyt
@@ -88,6 +86,66 @@
   \printfield{volume}%
   \setunit*{\addspace}%
   \printfield{eid}%
+}
+
+\DeclareFieldFormat[book,inbook,incollection]{booktitle}{\emph{#1}}
+
+\renewbibmacro*{publisher+location+date}{%
+  \printfield{edition}%
+  \setunit{\addcomma\space}%
+  \printlist{publisher}%
+  \setunit{\addcomma\space}%
+  \printlist{location}%
+}
+
+\DeclareBibliographyDriver{book}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \addspace
+  \printfield{title}%
+  \newunit\newblock%
+  \usebibmacro{publisher+location+date}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}%
+}
+
+\DeclareBibliographyDriver{incollection}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\labelnamepunct}\newblock
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit
+  \usebibmacro{title}
+  \newunit\newblock
+  \usebibmacro{bybookauthor}%
+  \newunit\newblock
+  \printfield{booktitle}\addspace%
+  \printtext[parens]{%
+   ed.~by%
+   \addspace%
+   \printnames[byeditor]{editor}%
+   \clearname{editor}%
+  }%
+  \newunit\newblock
+  \printfield{volumes}%
+  \newunit\newblock
+  \usebibmacro{series+number}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  .\newblock
+  \usebibmacro{publisher+location+date}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}%
 }
 
 \endinput
