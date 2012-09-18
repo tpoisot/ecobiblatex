@@ -13,5 +13,6 @@ However, the correct format was taken from the list of references in a PDF of th
 
 [*Ecol. Lett.*](http://bit.ly/IdEIY5)       
 [*Glob. Ecol. Biogeogr.*](http://bit.ly/JoUgbk)   
+*British Ecological Society*     
 [*Trends Ecol. Evol.*](http://bit.ly/ItbUrh) - in progress    
 *Am. Nat.* - coming soon         

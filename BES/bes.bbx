@@ -1,0 +1,153 @@
+\ProvidesFile{bes.bbx}[biblatex style for British Ecological Society journals]
+
+%% We build on the original author-year comp
+\RequireBibliographyStyle{standard}
+\RequireBibliographyStyle{authoryear-comp}
+
+%% General options to match the ELE requirements
+\ExecuteBibliographyOptions
+  {
+    doi          = false , 
+    eprint       = false ,
+    firstinits   = true  ,
+    isbn         = false ,
+    maxcitenames = 2     ,
+    mincitenames = 1     ,
+    url          = false ,
+    dashed       = false ,
+    sorting      = nyt
+  }
+
+%% Only the year is important
+\AtEveryBibitem{%
+  \clearfield{day}%
+  \clearfield{month}%
+  \clearfield{endday}%
+  \clearfield{endmonth}%
+}
+
+%% Titles are in upright, no quotes
+\DeclareFieldFormat[article,inbook,incollection,inproceedings,patent,thesis,unpublished]{title}{#1\isdot}
+
+%% Articles have no page number indication
+\DeclareFieldFormat[article]{pages}{#1}
+\DeclareFieldFormat[article]{title}{\emph{#1}}
+\DeclareFieldFormat[article]{volume}{\textbf{#1}}
+\DeclareFieldFormat[article]{journaltitle}{\mdseries{#1}}
+
+%% Last author is separated by an ampersand
+\renewcommand*{\finalnamedelim}{\addspace\&\space}
+
+%% Authors are Name, F.S.
+\DeclareNameAlias{sortname}{last-first}
+
+%% The initials are separated by a thin space, as per Bringhurst
+\renewcommand*{\mkbibnamefirst}[1]{{\let~\,#1}}
+
+
+\DeclareNameFormat{default}{%
+  \renewcommand*{\multinamedelim}{\addsemicolon\addspace}%
+  \usebibmacro{name:last-first}{#1}{#4}{#5}{#7}%
+  \usebibmacro{name:andothers}%
+}
+
+\DeclareBibliographyDriver{article}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \addspace
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{bytranslator+others}%
+  \newunit\newblock
+  \printfield{version}%
+  \newunit\newblock%
+  \usebibmacro{journal+issuetitle}%
+  \newunit
+  \usebibmacro{byeditor+others}%
+  \newunit
+  \usebibmacro{note+pages}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}}
+
+\renewbibmacro*{journal+issuetitle}{%
+  \usebibmacro{journal},%
+  \setunit*{\addspace}%
+  \usebibmacro{volume+number+eid}%
+  \newunit
+}
+
+\renewbibmacro*{volume+number+eid}{%
+  \printfield{volume}%
+  \setunit*{\addspace}%
+  \printfield{eid}%
+}
+
+\DeclareFieldFormat[book,inbook,incollection]{booktitle}{\emph{#1}}
+
+\renewbibmacro*{publisher+location+date}{%
+  \printfield{edition}%
+  \setunit{\addcomma\space}%
+  \printlist{publisher}%
+  \setunit{\addcomma\space}%
+  \printlist{location}%
+}
+
+\DeclareBibliographyDriver{book}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \addspace
+  \printfield{title}%
+  \newunit\newblock%
+  \usebibmacro{publisher+location+date}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}%
+}
+
+\DeclareBibliographyDriver{incollection}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\labelnamepunct}\newblock
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit
+  \usebibmacro{title}
+  \newunit\newblock
+  \usebibmacro{bybookauthor}%
+  \newunit\newblock
+  \printfield{booktitle}\addspace%
+  \printtext[parens]{%
+   ed.~by%
+   \addspace%
+   \printnames[byeditor]{editor}%
+   \clearname{editor}%
+  }%
+  \newunit\newblock
+  \printfield{volumes}%
+  \newunit\newblock
+  \usebibmacro{series+number}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  .\newblock
+  \usebibmacro{publisher+location+date}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}%
+}
+
+\endinput

@@ -1,0 +1,562 @@
+% $ biblatex auxiliary file $
+% $ biblatex version 1.7 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\entry{Anderson2011}{article}{}
+  \name{author}{14}{}{%
+    {{}%
+     {Anderson}{A.}%
+     {Marti~J}{M.~J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Crist}{C.}%
+     {Thomas~O}{T.~O.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Chase}{C.}%
+     {Jonathan~M}{J.~M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Vellend}{V.}%
+     {Mark}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Inouye}{I.}%
+     {Brian~D}{B.~D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Freestone}{F.}%
+     {Amy~L}{A.~L.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Sanders}{S.}%
+     {Nathan~J}{N.~J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Cornell}{C.}%
+     {Howard~V}{H.~V.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Comita}{C.}%
+     {Liza~S}{L.~S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Davies}{D.}%
+     {Kendi~F}{K.~F.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Harrison}{H.}%
+     {Susan~P}{S.~P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kraft}{K.}%
+     {Nathan J~B}{N.~J.~B.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Stegen}{S.}%
+     {James~C}{J.~C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Swenson}{S.}%
+     {Nathan~G}{N.~G.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Wiley Online Library}%
+  }
+  \keyw{Biodiversity,Biological,Coral Reefs,Ecology,El Nino-Southern
+  Oscillation,Indonesia,Models,Multivariate Analysis}
+  \strng{namehash}{AMJ+1}
+  \strng{fullhash}{AMJCTOCJMVMIBDFALSNJCHVCLSDKFHSPKNJBSJCSNG1}
+  \field{labelyear}{2011}
+  \field{sortinit}{A}
+  \field{abstract}{%
+  A recent increase in studies of $\beta$ diversity has yielded a confusing
+  array of concepts, measures and methods. Here, we provide a roadmap of the
+  most widely used and ecologically relevant approaches for analysis through a
+  series of mission statements. We distinguish two types of $\beta$ diversity:
+  directional turnover along a gradient vs. non-directional variation.
+  Different measures emphasize different properties of ecological data. Such
+  properties include the degree of emphasis on presence/absence vs. relative
+  abundance information and the inclusion vs. exclusion of joint absences.
+  Judicious use of multiple measures in concert can uncover the underlying
+  nature of patterns in $\beta$ diversity for a given dataset. A case study of
+  Indonesian coral assemblages shows the utility of a multi-faceted approach.
+  We advocate careful consideration of relevant questions, matched by
+  appropriate analyses. The rigorous application of null models will also help
+  to reveal potential processes driving observed patterns in $\beta$
+  diversity.%
+  }
+  \verb{doi}
+  \verb 10.1111/j.1461-0248.2010.01552.x
+  \endverb
+  \field{issn}{1461-0248}
+  \field{number}{1}
+  \field{pages}{19\bibrangedash 28}
+  \field{title}{{Navigating the multiple meanings of beta diversity: a roadmap
+  for the practicing ecologist.}}
+  \verb{url}
+  \verb http://onlinelibrary.wiley.com/doi/10.1111/j.1461-0248.2010.01552.x/ful
+  \verb l http://www.ncbi.nlm.nih.gov/pubmed/21070562
+  \endverb
+  \field{volume}{14}
+  \verb{file}
+  \verb :home/tpoisot/Documents/Papers/Ecology Letters/Anderson et al. - 2011 -
+  \verb  Navigating the multiple meanings of beta diversity a roadmap for the p
+  \verb racticing ecologist.pdf:pdf
+  \endverb
+  \field{journaltitle}{Ecology Letters}
+  \field{month}{01}
+  \field{year}{2011}
+\endentry
+
+\entry{Darwin1859}{book}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Darwin}{D.}%
+     {Charles}{C.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {D. Appleton}%
+  }
+  \strng{namehash}{DC1}
+  \strng{fullhash}{DC1}
+  \field{labelyear}{1859}
+  \field{sortinit}{D}
+  \field{title}{{On the origin of species by means of natural selection, or the
+  preservation of favoured races in the struggle for life}}
+  \list{location}{1}{%
+    {New York}%
+  }
+  \field{year}{1859}
+\endentry
+
+\entry{Dunne2006}{incollection}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Dunne}{D.}%
+     {Jennifer~A}{J.~A.}%
+     {}{}%
+     {}{}}%
+  }
+  \name{editor}{2}{}{%
+    {{}%
+     {Pascual}{P.}%
+     {Mercedes}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Dunne}{D.}%
+     {Jennifer~A}{J.~A.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Oxford University Press}%
+  }
+  \strng{namehash}{DJA1}
+  \strng{fullhash}{DJA1}
+  \field{labelyear}{2006}
+  \field{sortinit}{D}
+  \field{booktitle}{Ecological Networks: Linking Structure to Dynamics in Food
+  Webs}
+  \field{pages}{27\bibrangedash 86}
+  \field{title}{{The network structure of food webs}}
+  \list{location}{1}{%
+    {Oxford}%
+  }
+  \verb{file}
+  \verb :home/tpoisot/Documents/Papers/Ecological Networks Linking Structure to
+  \verb  Dynamics in Food Webs/Dunne - 2006 - The network structure of food web
+  \verb s.pdf:pdf
+  \endverb
+  \field{year}{2006}
+\endentry
+
+\entry{Elton1927}{book}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Elton}{E.}%
+     {Charles~S}{C.~S.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {University of Chicago Press}%
+  }
+  \strng{namehash}{ECS1}
+  \strng{fullhash}{ECS1}
+  \field{labelyear}{1927}
+  \field{sortinit}{E}
+  \field{booktitle}{Animal ecology}
+  \field{title}{{Animal ecology}}
+  \field{year}{1927}
+\endentry
+
+\entry{Frank1993}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Frank}{F.}%
+     {Steven~A}{S.~A.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Springer}%
+  }
+  \strng{namehash}{FSA1}
+  \strng{fullhash}{FSA1}
+  \field{labelyear}{1993}
+  \field{extrayear}{1}
+  \field{sortinit}{F}
+  \field{number}{1}
+  \field{pages}{45\bibrangedash 75}
+  \field{title}{{Coevolutionary genetics of plants and pathogens}}
+  \field{volume}{7}
+  \verb{file}
+  \verb :home/tpoisot/Documents/Papers/Evolutionary Ecology/Frank - 1993 - Coev
+  \verb olutionary genetics of plants and pathogens.pdf:pdf
+  \endverb
+  \field{journaltitle}{Evolutionary Ecology}
+  \field{year}{1993}
+\endentry
+
+\entry{Frank1993b}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Frank}{F.}%
+     {Steven~A}{S.~A.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{FSA1}
+  \strng{fullhash}{FSA1}
+  \field{labelyear}{1993}
+  \field{extrayear}{2}
+  \field{sortinit}{F}
+  \field{number}{6}
+  \field{pages}{1721\bibrangedash 1732}
+  \field{title}{{Evolution of host-parasite diversity}}
+  \verb{url}
+  \verb http://www.csa.com/partners/viewrecord.php?requester=gs\&collection=ENV
+  \verb \&recid=3713621
+  \endverb
+  \field{volume}{47}
+  \verb{file}
+  \verb :home/tpoisot/Documents/Papers/Evolution/Frank - 1993 - Evolution of ho
+  \verb st-parasite diversity.pdf:pdf
+  \endverb
+  \field{journaltitle}{Evolution}
+  \field{year}{1993}
+\endentry
+
+\entry{Frank1993a}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Frank}{F.}%
+     {Steven~A}{S.~A.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {The Royal Society}%
+  }
+  \strng{namehash}{FSA1}
+  \strng{fullhash}{FSA1}
+  \field{labelyear}{1993}
+  \field{extrayear}{3}
+  \field{sortinit}{F}
+  \field{number}{1341}
+  \field{pages}{191\bibrangedash 197}
+  \field{title}{{Specificity versus detectable polymorphism in host-parasite
+  genetics}}
+  \field{volume}{254}
+  \verb{file}
+  \verb :home/tpoisot/Documents/Papers/Proceedings of the Royal Society B Biolo
+  \verb gical Sciences/Frank - 1993 - Specificity versus detectable polymorphis
+  \verb m in host-parasite genetics.pdf:pdf
+  \endverb
+  \field{journaltitle}{Proceedings of the Royal Society B: Biological Sciences}
+  \field{year}{1993}
+\endentry
+
+\entry{Holt1996}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Holt}{H.}%
+     {R~D}{R.~D.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Springer}%
+  }
+  \strng{namehash}{HRD1}
+  \strng{fullhash}{HRD1}
+  \field{labelyear}{1996}
+  \field{sortinit}{H}
+  \field{number}{1}
+  \field{pages}{1\bibrangedash 11}
+  \field{title}{{Demographic constraints in evolution: towards unifying the
+  evolutionary theories of senescence and niche conservatism}}
+  \field{volume}{10}
+  \field{journaltitle}{Evolutionary Ecology}
+  \field{year}{1996}
+\endentry
+
+\entry{PoisotBJLS2010}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Poisot}{P.}%
+     {Timoth\'{e}e}{T.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Desdevises}{D.}%
+     {Yves}{Y.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {John Wiley \& Sons}%
+  }
+  \keyw{lamellodiscus,morphometry,speciation}
+  \strng{namehash}{PTDY1}
+  \strng{fullhash}{PTDY1}
+  \field{labelyear}{2010}
+  \field{sortinit}{P}
+  \field{abstract}{%
+  In the present study, we used morphometry as a proxy to study the
+  microevolution of generalist Lamellodiscus (Monogenea, Diplectanidae)
+  species, comprising gill parasites of sparid fish. We investigated 147
+  individuals, belonging to nine described species, regrouped in four
+  morphotypes. Morphometric measurements were taken on sclerotized parts of the
+  attachment organ. The formation of groups on the basis of the global
+  morphometry within a host species, or between several host species, was
+  assessed using both exploratory analyses (principal component analysis and
+  clustering analysis) and statistical tests. We showed that: (1) for three out
+  of four morphotypes, the global morphometry was significantly different
+  according to host species used, and (2) the coexistence of two populations of
+  Lamellodiscus elegans on Diplodus sargus could reflect an ongoing intra-host
+  speciation event. We suggest that generalist Lamellodiscus are undergoing
+  specialization on their different hosts, which may lead to speciation.%
+  }
+  \verb{doi}
+  \verb 10.1111/j.1095-8312.2009.01381.x
+  \endverb
+  \field{issn}{00244066}
+  \field{number}{3}
+  \field{pages}{559\bibrangedash 569}
+  \field{title}{{Putative speciation events in Lamellodiscus (Monogenea:
+  Diplectanidae) assessed by a morphometric approach}}
+  \verb{url}
+  \verb http://doi.wiley.com/10.1111/j.1095-8312.2009.01381.x
+  \endverb
+  \field{volume}{99}
+  \verb{file}
+  \verb :home/tpoisot/Documents/Papers/Biological Journal of the Linnean Societ
+  \verb y/Poisot, Desdevises - 2010 - Putative speciation events in Lamellodisc
+  \verb us (Monogenea Diplectanidae) assessed by a morphometric approach.pdf:pd
+  \verb f
+  \endverb
+  \field{journaltitle}{Biological Journal of the Linnean Society}
+  \field{month}{02}
+  \field{year}{2010}
+\endentry
+
+\entry{R-Development-Core-Team2008}{manual}{}
+  \name{author}{1}{}{%
+    {{}%
+     {{R Development Core Team}}{R.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \list{organization}{1}{%
+    {R Foundation for Statistical Computing}%
+  }
+  \strng{namehash}{R1}
+  \strng{fullhash}{R1}
+  \field{labelyear}{2008}
+  \field{sortinit}{R}
+  \field{title}{{R: A Language and Environment for Statistical Computing}}
+  \verb{url}
+  \verb http://www.r-project.org
+  \endverb
+  \list{location}{1}{%
+    {Vienna, Austria}%
+  }
+  \field{annotation}{%
+  \{ISBN\} 3-900051-07-0%
+  }
+  \field{year}{2008}
+\endentry
+
+\entry{Tuomisto2010}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Tuomisto}{T.}%
+     {Hanna}{H.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{TH1}
+  \strng{fullhash}{TH1}
+  \field{labelyear}{2010}
+  \field{sortinit}{T}
+  \verb{doi}
+  \verb 10.1111/j.1600-0587.2009.05880.x
+  \endverb
+  \field{issn}{09067590}
+  \field{number}{1}
+  \field{pages}{2\bibrangedash 22}
+  \field{title}{{A diversity of beta diversities: straightening up a concept
+  gone awry. Part 1. Defining beta diversity as a function of alpha and gamma
+  diversity}}
+  \verb{url}
+  \verb http://doi.wiley.com/10.1111/j.1600-0587.2009.05880.x
+  \endverb
+  \field{volume}{33}
+  \verb{file}
+  \verb :home/tpoisot/Documents/Papers/Ecography/Tuomisto - 2010 - A diversity
+  \verb of beta diversities straightening up a concept gone awry. Part 1. Defin
+  \verb ing beta diversity as a function of alpha and gamma diversity.pdf:pdf
+  \endverb
+  \field{journaltitle}{Ecography}
+  \field{month}{02}
+  \field{year}{2010}
+\endentry
+
+\entry{Tuomisto2011}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Tuomisto}{T.}%
+     {Hanna}{H.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{alpha diversity \'{a} beta,diversity \'{a},gamma diversity \'{a}
+  diversity,information on,partitioning \'{a} species turnover,quantifying
+  taxonomic diversity requires,terminology,the need for consistent}
+  \strng{namehash}{TH1}
+  \strng{fullhash}{TH1}
+  \field{labelyear}{2011}
+  \field{sortinit}{T}
+  \field{abstract}{%
+  Meaningful quantification of species diversity requires that both 'species'
+  and 'diversity' are unambiguously defined. Rigorous rules of nomenclature
+  exist to ensure that each species has a single unique name, but the naming of
+  concepts is much more variable. As a consequence, 'diversity' has been
+  defined in so many different ways that its ability to transfer accurate
+  information has been compromised. This problem can be solved by defining
+  'diversity' as the effective number of species (or other types of interest),
+  and using the term 'true diversity' to specify that this narrow concept is
+  being used (analogously to using the term 'true bugs' when adhering to a
+  narrow circumscription of 'bugs'). Other measures related to diversity (such
+  as entropies and probabilities) continue to be useful, but they represent
+  different phenomena and should therefore be referred to by different names.
+  Total species diversity in a dataset can be partitioned into two components
+  in several different ways. The components of a specific multiplicative
+  partitioning can be called true alpha diversity and true beta diversity. When
+  the partitioning is done in some other way, the resulting components are
+  different and should be called by other names. For example, the beta
+  component of additive partitioning does not equal true beta diversity, but
+  can logically be called species turnover. All the phenomena that have been
+  called 'beta diversity' in the ecological literature have also been called by
+  alternative unique names. Consequently, a consistent terminology is already
+  available; only a general agreement to use it is lacking.%
+  }
+  \verb{doi}
+  \verb 10.1007/s00442-011-2128-4
+  \endverb
+  \field{issn}{1432-1939}
+  \field{pages}{903\bibrangedash 911}
+  \field{title}{{Commentary: do we have a consistent terminology for species
+  diversity? Yes, if we choose to use it.}}
+  \verb{url}
+  \verb http://www.ncbi.nlm.nih.gov/pubmed/21947563
+  \endverb
+  \field{volume}{167}
+  \verb{file}
+  \verb :home/tpoisot/Documents/Papers/Oecologia/Tuomisto - 2011 - Commentary d
+  \verb o we have a consistent terminology for species diversity Yes, if we cho
+  \verb ose to use it.pdf:pdf
+  \endverb
+  \field{journaltitle}{Oecologia}
+  \field{month}{09}
+  \field{year}{2011}
+\endentry
+
+\entry{Yang2012}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Yang}{Y.}%
+     {Ziheng}{Z.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Rannala}{R.}%
+     {Bruce}{B.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Nature Publishing Group}%
+  }
+  \strng{namehash}{YZRB1}
+  \strng{fullhash}{YZRB1}
+  \field{labelyear}{2012}
+  \field{sortinit}{Y}
+  \verb{doi}
+  \verb 10.1038/nrg3186
+  \endverb
+  \field{issn}{1471-0056}
+  \field{number}{May}
+  \field{title}{{Molecular phylogenetics: principles and practice}}
+  \verb{url}
+  \verb http://www.nature.com/doifinder/10.1038/nrg3186
+  \endverb
+  \field{volume}{13}
+  \verb{file}
+  \verb :home/tpoisot/Documents/Papers/Nature Reviews Genetics/Yang, Rannala -
+  \verb 2012 - Molecular phylogenetics principles and practice.pdf:pdf
+  \endverb
+  \field{journaltitle}{Nature Reviews Genetics}
+  \field{month}{03}
+  \field{year}{2012}
+\endentry
+
+\lossort
+\endlossort
+
+\endinput
