@@ -45,6 +45,27 @@
 \DeclareNameAlias{default}{last-first}
 
 \renewcommand*{\labelnamepunct}{\addspace}
+
+\DeclareFieldFormat{editortype}{\mkbibparens{#1}}
+\renewbibmacro*{bbx:editor}[1]{%
+  \ifboolexpr{
+    test \ifuseeditor
+    and
+    not test {\ifnameundef{editor}}
+  }
+    {\usebibmacro{bbx:dashcheck}
+       {\bibnamedash}
+       {\printnames{editor}%
+        \setunit{\addspace}%
+        \usebibmacro{bbx:savehash}}%
+     \usebibmacro{#1}%
+     \clearname{editor}%
+     \setunit{\addspace}}%
+    {\global\undef\bbx@lasthash
+     \usebibmacro{labeltitle}%
+     \setunit*{\addspace}}%
+  \usebibmacro{date+extrayear}}
+
 \renewbibmacro{in:}{}
 
 \renewbibmacro*{journal+issuetitle}{%
