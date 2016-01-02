@@ -30,7 +30,8 @@
 
 %% Articles have no page number indication
 \DeclareFieldFormat[article]{pages}{#1}
-\DeclareFieldFormat[article]{volume}{\textbf{#1}}
+\DeclareFieldFormat[article]{volume}{\mkbibbold{#1}}
+\DeclareFieldFormat{journaltitle}{\mkbibemph{#1\isdot}}
 
 %% Last author is separated by an ampersand
 \renewcommand*{\finalnamedelim}{\addspace\&\space}
@@ -43,35 +44,12 @@
 
 \DeclareNameAlias{default}{last-first}
 
-\DeclareBibliographyDriver{article}{%
-  \usebibmacro{bibindex}%
-  \usebibmacro{begentry}%
-  \usebibmacro{author/translator+others}%
-  \addspace
-  \usebibmacro{title}%
-  \newunit
-  \printlist{language}%
-  \newunit\newblock
-  \usebibmacro{byauthor}%
-  \newunit\newblock
-  \usebibmacro{bytranslator+others}%
-  \newunit\newblock
-  \printfield{version}%
-  \newunit\newblock%
-  \usebibmacro{journal+issuetitle}%
-  \newunit
-  \usebibmacro{byeditor+others}%
-  \newunit
-  \usebibmacro{note+pages}%
-  \newunit\newblock
-  \usebibmacro{addendum+pubstate}%
-  \setunit{\bibpagerefpunct}\newblock
-  \usebibmacro{pageref}%
-  \usebibmacro{finentry}}
+\renewcommand*{\labelnamepunct}{\addspace}
+\renewbibmacro{in:}{}
 
 \renewbibmacro*{journal+issuetitle}{%
-  \usebibmacro{journal},%
-  \setunit*{\addspace}%
+  \usebibmacro{journal}%
+  \setunit*{\addcomma\space}%
   \usebibmacro{volume+number+eid}%
   \newunit
 }
