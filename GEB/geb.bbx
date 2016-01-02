@@ -79,22 +79,25 @@
   \usebibmacro{begentry}%
   \usebibmacro{author/translator+others}%
   \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newunit
   \printlist{language}%
   \newunit\newblock
   \usebibmacro{byauthor}%
-  \newunit
-  \usebibmacro{title}
   \newunit\newblock
-  \usebibmacro{bybookauthor}%
-  \newunit\newblock
-  \printfield{booktitle}\addspace%
+  \usebibmacro{in:}%
+  \usebibmacro{maintitle+booktitle}%
+  \setunit{\addspace}%
   \printtext[parens]{%
-   ed.~by%
-   \addspace%
-   \printnames[byeditor]{editor}%
-   \clearname{editor}%
-  }%
+    \usebibmacro{byeditor+others}}%
   \newunit\newblock
+  \printfield{edition}%
+  \newunit
+  \iffieldundef{maintitle}
+    {\printfield{volume}%
+     \printfield{part}}
+    {}%
+  \newunit
   \printfield{volumes}%
   \newunit\newblock
   \usebibmacro{series+number}%
@@ -102,13 +105,23 @@
   \printfield{note}%
   \newunit\newblock
   \usebibmacro{chapter+pages}%
-  .\newblock
+  \newunit\newblock
   \usebibmacro{publisher+location+date}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
   \newunit\newblock
   \usebibmacro{addendum+pubstate}%
   \setunit{\bibpagerefpunct}\newblock
   \usebibmacro{pageref}%
-  \usebibmacro{finentry}%
-}
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
 
 \endinput
