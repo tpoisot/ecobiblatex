@@ -60,28 +60,19 @@
   \printfield{eid}%
 }
 
-\DeclareFieldFormat[book,inbook,incollection]{booktitle}{\emph{#1}}
-
 \renewbibmacro*{publisher+location+date}{%
+  \restorefield{edition}{\bbx@savededit}
   \printfield{edition}%
-  \setunit{\addcomma\space}%
+  \setunit*{\addcomma\space}%
   \printlist{publisher}%
   \setunit{\addcomma\space}%
   \printlist{location}%
 }
 
-\DeclareBibliographyDriver{book}{%
-  \usebibmacro{bibindex}%
-  \usebibmacro{begentry}%
-  \usebibmacro{author/translator+others}%
-  \addspace
-  \printfield{title}%
-  \newunit\newblock%
-  \usebibmacro{publisher+location+date}%
-  \setunit{\bibpagerefpunct}\newblock
-  \usebibmacro{pageref}%
-  \usebibmacro{finentry}%
-}
+\renewbibmacro{begentry}{%
+  \savefield{edition}{\bbx@savededit}%
+  \clearfield{edition}}
+
 
 \DeclareBibliographyDriver{incollection}{%
   \usebibmacro{bibindex}%
