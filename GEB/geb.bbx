@@ -1,7 +1,6 @@
 \ProvidesFile{geb.bbx}[biblatex style for Global Ecology and Biogeography]
 
 %% We build on the original author-year comp
-\RequireBibliographyStyle{standard}
 \RequireBibliographyStyle{authoryear-comp}
 
 %% General options to match the ELE requirements
@@ -31,7 +30,8 @@
 
 %% Articles have no page number indication
 \DeclareFieldFormat[article]{pages}{#1}
-\DeclareFieldFormat[article]{volume}{\textbf{#1}}
+\DeclareFieldFormat[article]{volume}{\mkbibbold{#1}}
+\DeclareFieldFormat{journaltitle}{\mkbibemph{#1\isdot}}
 
 %% Last author is separated by an ampersand
 \renewcommand*{\finalnamedelim}{\addspace\&\space}
@@ -40,44 +40,37 @@
 \DeclareNameAlias{sortname}{last-first}
 
 %% The initials are separated by a thin space, as per Bringhurst
-\renewcommand*{\mkbibnamefirst}[1]{{\let~\,#1}}
+\renewrobustcmd*{\bibinitdelim}{\addnbthinspace}
 
+\DeclareNameAlias{default}{last-first}
 
-\DeclareNameFormat{default}{%
-  \renewcommand*{\multinamedelim}{\addsemicolon\addspace}%
-  \usebibmacro{name:last-first}{#1}{#4}{#5}{#7}%
-  \usebibmacro{name:andothers}%
-}
+\renewcommand*{\labelnamepunct}{\addspace}
 
-\DeclareBibliographyDriver{article}{%
-  \usebibmacro{bibindex}%
-  \usebibmacro{begentry}%
-  \usebibmacro{author/translator+others}%
-  \addspace
-  \usebibmacro{title}%
-  \newunit
-  \printlist{language}%
-  \newunit\newblock
-  \usebibmacro{byauthor}%
-  \newunit\newblock
-  \usebibmacro{bytranslator+others}%
-  \newunit\newblock
-  \printfield{version}%
-  \newunit\newblock%
-  \usebibmacro{journal+issuetitle}%
-  \newunit
-  \usebibmacro{byeditor+others}%
-  \newunit
-  \usebibmacro{note+pages}%
-  \newunit\newblock
-  \usebibmacro{addendum+pubstate}%
-  \setunit{\bibpagerefpunct}\newblock
-  \usebibmacro{pageref}%
-  \usebibmacro{finentry}}
+\DeclareFieldFormat{editortype}{\mkbibparens{#1}}
+\renewbibmacro*{bbx:editor}[1]{%
+  \ifboolexpr{
+    test \ifuseeditor
+    and
+    not test {\ifnameundef{editor}}
+  }
+    {\usebibmacro{bbx:dashcheck}
+       {\bibnamedash}
+       {\printnames{editor}%
+        \setunit{\addspace}%
+        \usebibmacro{bbx:savehash}}%
+     \usebibmacro{#1}%
+     \clearname{editor}%
+     \setunit{\addspace}}%
+    {\global\undef\bbx@lasthash
+     \usebibmacro{labeltitle}%
+     \setunit*{\addspace}}%
+  \usebibmacro{date+extrayear}}
+
+\renewbibmacro{in:}{}
 
 \renewbibmacro*{journal+issuetitle}{%
-  \usebibmacro{journal},%
-  \setunit*{\addspace}%
+  \usebibmacro{journal}%
+  \setunit*{\addcomma\space}%
   \usebibmacro{volume+number+eid}%
   \newunit
 }
@@ -88,50 +81,44 @@
   \printfield{eid}%
 }
 
-\DeclareFieldFormat[book,inbook,incollection]{booktitle}{\emph{#1}}
-
 \renewbibmacro*{publisher+location+date}{%
+  \restorefield{edition}{\bbx@savededit}
   \printfield{edition}%
-  \setunit{\addcomma\space}%
+  \setunit*{\addcomma\space}%
   \printlist{publisher}%
   \setunit{\addcomma\space}%
   \printlist{location}%
 }
 
-\DeclareBibliographyDriver{book}{%
-  \usebibmacro{bibindex}%
-  \usebibmacro{begentry}%
-  \usebibmacro{author/translator+others}%
-  \addspace
-  \printfield{title}%
-  \newunit\newblock%
-  \usebibmacro{publisher+location+date}%
-  \setunit{\bibpagerefpunct}\newblock
-  \usebibmacro{pageref}%
-  \usebibmacro{finentry}%
-}
+\renewbibmacro{begentry}{%
+  \savefield{edition}{\bbx@savededit}%
+  \clearfield{edition}}
+
 
 \DeclareBibliographyDriver{incollection}{%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{author/translator+others}%
   \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newunit
   \printlist{language}%
   \newunit\newblock
   \usebibmacro{byauthor}%
-  \newunit
-  \usebibmacro{title}
   \newunit\newblock
-  \usebibmacro{bybookauthor}%
-  \newunit\newblock
-  \printfield{booktitle}\addspace%
+  \usebibmacro{in:}%
+  \usebibmacro{maintitle+booktitle}%
+  \setunit{\addspace}%
   \printtext[parens]{%
-   ed.~by%
-   \addspace%
-   \printnames[byeditor]{editor}%
-   \clearname{editor}%
-  }%
+    \usebibmacro{byeditor+others}}%
   \newunit\newblock
+  \printfield{edition}%
+  \newunit
+  \iffieldundef{maintitle}
+    {\printfield{volume}%
+     \printfield{part}}
+    {}%
+  \newunit
   \printfield{volumes}%
   \newunit\newblock
   \usebibmacro{series+number}%
@@ -139,13 +126,23 @@
   \printfield{note}%
   \newunit\newblock
   \usebibmacro{chapter+pages}%
-  .\newblock
+  \newunit\newblock
   \usebibmacro{publisher+location+date}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
   \newunit\newblock
   \usebibmacro{addendum+pubstate}%
   \setunit{\bibpagerefpunct}\newblock
   \usebibmacro{pageref}%
-  \usebibmacro{finentry}%
-}
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
 
 \endinput
