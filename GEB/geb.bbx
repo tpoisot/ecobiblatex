@@ -39,14 +39,9 @@
 \DeclareNameAlias{sortname}{last-first}
 
 %% The initials are separated by a thin space, as per Bringhurst
-\renewcommand*{\mkbibnamefirst}[1]{{\let~\,#1}}
+\renewrobustcmd*{\bibinitdelim}{\addnbthinspace}
 
-
-\DeclareNameFormat{default}{%
-  \renewcommand*{\multinamedelim}{\addsemicolon\addspace}%
-  \usebibmacro{name:last-first}{#1}{#4}{#5}{#7}%
-  \usebibmacro{name:andothers}%
-}
+\DeclareNameAlias{default}{last-first}
 
 \DeclareBibliographyDriver{article}{%
   \usebibmacro{bibindex}%
