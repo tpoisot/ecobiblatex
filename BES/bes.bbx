@@ -4,20 +4,24 @@
 \RequireBibliographyStyle{standard}
 \RequireBibliographyStyle{authoryear-comp}
 
-%% General options to match the ELE requirements
+%% General options to match the BES requirements
 \ExecuteBibliographyOptions
   {
     doi          = false , 
     eprint       = false ,
-    firstinits   = true  ,
+    giveninits   = true  ,
     isbn         = false ,
     maxcitenames = 2     ,
     mincitenames = 1     ,
-    url          = false ,
+    url          = true ,
     dashed       = false ,
     sorting      = nyt
   }
 
+\DefineBibliographyStrings{english}{%
+  urlseen = {accessed},
+}
+  
 %% Only the year is important
 \AtEveryBibitem{%
   \clearfield{day}%
@@ -27,7 +31,7 @@
 }
 
 %% Titles are in upright, no quotes
-\DeclareFieldFormat[article,inbook,incollection,inproceedings,patent,thesis,unpublished]{title}{#1\isdot}
+\DeclareFieldFormat[article,inbook,incollection,inproceedings,patent,unpublished]{title}{#1\isdot}
 
 %% Articles have no page number indication
 \DeclareFieldFormat[article]{pages}{#1}
@@ -39,15 +43,15 @@
 \renewcommand*{\finalnamedelim}{\addspace\&\space}
 
 %% Authors are Name, F.S.
-\DeclareNameAlias{sortname}{last-first}
+\DeclareNameAlias{sortname}{family-given}
 
 %% The initials are separated by a thin space, as per Bringhurst
-\renewcommand*{\mkbibnamefirst}[1]{{\let~\,#1}}
+\renewcommand*{\mkbibnamegiven}[1]{{\let~\,#1}}
 
 
 \DeclareNameFormat{default}{%
   \renewcommand*{\multinamedelim}{\addsemicolon\addspace}%
-  \usebibmacro{name:last-first}{#1}{#4}{#5}{#7}%
+  \usebibmacro{name:family-given}{#1}{#4}{#5}{#7}%
   \usebibmacro{name:andothers}%
 }
 
@@ -100,6 +104,22 @@
   \printlist{location}%
 }
 
+\newbibmacro*{institution+location+date}{%
+  \printfield{edition}%
+  \setunit{\addcomma\space}%
+  \printlist{institution}%
+  \setunit{\addcomma\space}%
+  \printlist{location}%
+}
+
+\newbibmacro*{organization+location+date}{%
+  \printfield{edition}%
+  \setunit{\addcomma\space}%
+  \printlist{organization}%
+  \setunit{\addcomma\space}%
+  \printlist{location}%
+}
+
 \DeclareBibliographyDriver{book}{%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
@@ -112,6 +132,8 @@
   \usebibmacro{pageref}%
   \usebibmacro{finentry}%
 }
+
+\DeclareFieldFormat{parens}{\mkbibparens{#1}}
 
 \DeclareBibliographyDriver{incollection}{%
   \usebibmacro{bibindex}%
@@ -128,9 +150,8 @@
   \newunit\newblock
   \printfield{booktitle}\addspace%
   \printtext[parens]{%
-   ed.~by%
+   eds%
    \addspace%
-   \printnames[byeditor]{editor}%
    \clearname{editor}%
   }%
   \newunit\newblock
