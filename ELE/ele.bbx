@@ -43,12 +43,30 @@
 %% The initials are separated by a thin space, as per Bringhurst
 \renewcommand*{\mkbibnamefirst}[1]{{\let~\,#1}}
 
-
-\DeclareNameFormat{default}{%
-  \renewcommand*{\multinamedelim}{\addsemicolon\addspace}%
-  \usebibmacro{name:last-first}{#1}{#4}{#5}{#7}%
-  \usebibmacro{name:andothers}%
-}
+%% Modify the name format
+% See http://www.texdev.net/2016/03/13/biblatex-a-new-syntax-for-declarenameformat/
+\@ifpackageloaded{biblatex_legacy}
+  {
+    % Original syntax for BibTeX model
+    \DeclareNameFormat{default}{%
+      \renewcommand*{\multinamedelim}{\addsemicolon\addspace}%
+      \usebibmacro{name:last-first}{#1}{#4}{#5}{#7}%
+      \usebibmacro{name:andothers}%
+    }
+  }
+  {
+   % New syntax for flexible back end
+    \DeclareNameFormat{default}{%
+      \renewcommand*{\multinamedelim}{\addsemicolon\addspace}%
+      \nameparts{#1}%
+      \usebibmacro{name:family-given}
+        {\namepartfamily}
+        {\namepartgiveni}
+        {\namepartprefix}
+        {\namepartsuffix}%
+      \usebibmacro{name:andothers}%
+    }
+  }
 
 \DeclareBibliographyDriver{article}{%
   \usebibmacro{bibindex}%
