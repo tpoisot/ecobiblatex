@@ -1,0 +1,168 @@
+\ProvidesFile{icb.bbx}[biblatex style for Integrative and Comparative Biology]
+
+% Build from authoryear-comp style
+\RequireBibliographyStyle{authoryear-comp}
+
+%% General options
+\ExecuteBibliographyOptions
+{
+  doi = false, 
+  eprint = false,
+  giveninits = true,
+  terseinits = true,
+  isbn = false,
+  maxcitenames = 2,
+  mincitenames = 1,
+  maxbibnames = 10,
+  minbibnames = 10,
+  url = false,
+  dashed = false,
+  abbreviate = false,
+  sorting = nyt
+}
+
+%% Clear unnecessary fields in case
+\AtEveryBibitem{%
+  \clearfield{day}%
+  \clearfield{month}%
+  \clearfield{endday}%
+  \clearfield{endmonth}%
+}
+
+%% Titles are upright, no quotes
+\DeclareFieldFormat[article,book,inbook,incollection,inproceedings,patent,thesis,unpublished]{title}{#1\isdot}
+
+%% Plain journal and book titles
+\DeclareFieldFormat{journaltitle}{#1}
+\DeclareFieldFormat{booktitle}{#1}
+
+%% Articles have no page number indication but collections do have a "p."
+\DeclareFieldFormat{pages}{#1}
+\DeclareFieldFormat[incollection]{pages}{p.\space#1}
+
+%% Colon before pages normally
+\renewcommand*{\bibpagespunct}{\addcolon}
+
+%% Last name first (authors, editors, etc)
+\DeclareNameAlias{sortname}{last-first}
+\DeclareNameAlias{default}{last-first}
+
+%% Period after name and before year
+\DeclareDelimFormat[bib]{nameyeardelim}{\addperiod\space}
+\DeclareDelimFormat[biblist]{nameyeardelim}{\addperiod\space}
+
+
+%% Plain year without parentheses
+\renewbibmacro*{date+extrayear}{%
+  \iffieldundef{labelyear}
+  {}
+  {%
+    \iffieldsequal{year}{labelyear}
+    {\printlabeldateextra}%
+    {\printfield{labelyear}%
+      \printfield{extrayear}}}}
+
+%% No issue or eid
+\renewbibmacro*{volume+number+eid}{%
+  \printfield{volume}}
+
+%% Editor names before "editors"
+\renewbibmacro*{byeditor+others}{%
+  \ifnameundef{editor}
+    {}
+    {\printnames[byeditor]{editor}%
+     \setunit{\addcomma\space}%
+     \usebibmacro{byeditor+othersstrg}%
+     \clearname{editor}%
+     \newunit}%
+  \usebibmacro{byeditorx}%
+  \usebibmacro{bytranslator+others}}
+
+%% no "by" for editors
+\DefineBibliographyStrings{english}{byeditor = {editor}, byeditor={editors}} 
+
+%% modified from standard.bbx: remove language, "in" for journal
+\DeclareBibliographyDriver{article}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{title}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{bytranslator+others}%
+  \newunit\newblock
+  \printfield{version}%
+  \newunit\newblock
+  \usebibmacro{journal+issuetitle}%
+  \newunit
+  \usebibmacro{byeditor+others}%
+  \newunit
+  \usebibmacro{note+pages}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{issn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
+
+%% modified from standard.bbx: editor names first then booktitle
+\DeclareBibliographyDriver{incollection}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \usebibmacro{byeditor+others}%
+  \newunit\newblock
+  \usebibmacro{maintitle+booktitle}%
+  \newunit\newblock
+  \printfield{edition}%
+  \newunit
+  \iffieldundef{maintitle}
+    {\printfield{volume}%
+     \printfield{part}}
+    {}%
+  \newunit
+  \printfield{volumes}%
+  \newunit\newblock
+  \usebibmacro{series+number}%
+  \newunit\newblock
+  \usebibmacro{publisher+location+date}%
+  \newunit\newblock
+  \addperiod\space\printfield{pages}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
+
+\endinput
