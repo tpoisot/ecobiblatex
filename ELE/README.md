@@ -1,4 +1,4 @@
-[Ecology Letters](http://bit.ly/IdEIY5) Citation and Bibliography Biblatex README
+﻿[Ecology Letters](http://bit.ly/IdEIY5) Citation and Bibliography Biblatex README
 =============
 
 Style originally coded by Timothée Poisot (GitHub - tpoisot)
@@ -12,6 +12,13 @@ To use:
 bibstyle=ele,
 backend=biber,
 bibencoding=utf8]{biblatex}
+
+Include where you want to place your bibliography:
+
+\begin{refcontext}[sorting=nyt]
+\printbibliography
+\end{refcontext}
+
 
 Notes:
 - As of 2018-06-07 Have not checked the case when same authors and same year - ELE requirements is James et al. 1986a, b
