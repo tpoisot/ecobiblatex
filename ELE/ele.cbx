@@ -2,4 +2,11 @@
 
 \RequireCitationStyle{authoryear-comp}
 
+\ExecuteBibliographyOptions{
+sortcites	=	true,
+sorting		=	ynt,
+uniquename	= 	false,
+uniquelist	=	false}% sorts multiple citations in chronological order. When different articles but same first author - uniquename=false and uniquelist=false prevent either initials of first author being included or second author being included.
+%%NOTE As of 2018-06-07 Have not checked the case when same authors and same year - ELE requirements is James et al. 1986a, b
+
 \endinput

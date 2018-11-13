@@ -7,17 +7,18 @@
 %% General options to match the ELE requirements
 \ExecuteBibliographyOptions
   {
+	date		 = year  ,  
     doi          = false , 
     eprint       = false ,
     firstinits   = true  ,
     isbn         = false ,
     maxcitenames = 2     ,
     mincitenames = 1     ,
-    maxbibnames  = 7     ,
+    maxbibnames  = 6     ,
 	minbibnames  = 6     ,
     url          = false ,
     dashed       = false ,
-    sorting      = nyt
+    giveninits   = true  ,
   }
 
 %% Only the year is important
@@ -26,10 +27,31 @@
   \clearfield{month}%
   \clearfield{endday}%
   \clearfield{endmonth}%
+  \clearfield{number}%
 }
 
+%% Make article titles sentence case (prevents journal titles, shortjournal and other titles from being sentence case). 
+\DeclareFieldFormat{titlecase}{\MakeTitleCase{#1}}
+
+\newrobustcmd{\MakeTitleCase}[1]{%
+  \ifthenelse{\ifcurrentfield{booktitle}\OR\ifcurrentfield{booksubtitle}%
+    \OR\ifcurrentfield{maintitle}\OR\ifcurrentfield{mainsubtitle}%
+    \OR\ifcurrentfield{journaltitle}\OR\ifcurrentfield{journalsubtitle}%
+    \OR\ifcurrentfield{shortjournal}%
+    \OR\ifcurrentfield{issuetitle}\OR\ifcurrentfield{issuesubtitle}%
+    \OR\ifentrytype{book}\OR\ifentrytype{mvbook}\OR\ifentrytype{bookinbook}%
+    \OR\ifentrytype{booklet}\OR\ifentrytype{suppbook}%
+    \OR\ifentrytype{collection}\OR\ifentrytype{mvcollection}%
+    \OR\ifentrytype{suppcollection}\OR\ifentrytype{manual}%
+    \OR\ifentrytype{periodical}\OR\ifentrytype{suppperiodical}%
+    \OR\ifentrytype{proceedings}\OR\ifentrytype{mvproceedings}%
+    \OR\ifentrytype{reference}\OR\ifentrytype{mvreference}%
+    \OR\ifentrytype{report}\OR\ifentrytype{thesis}}
+    {#1}
+    {\MakeSentenceCase{#1}}}
+
 %% Titles are in upright, no quotes
-\DeclareFieldFormat[article,inbook,incollection,inproceedings,patent,thesis,unpublished]{title}{#1\isdot}
+\DeclareFieldFormat[article,inbook,incollection,inproceedings,patent,thesis,unpublished,online]{title}{#1\isdot}
 
 %% Articles have no page number indication
 \DeclareFieldFormat[article]{pages}{#1}
@@ -40,9 +62,27 @@
 %% Authors are Name, F.S.
 \DeclareNameAlias{sortname}{last-first}
 
-%% The initials are separated by a thin space, as per Bringhurst
-\renewcommand*{\mkbibnamefirst}[1]{{\let~\,#1}}
+%% No space between the initials
+\renewcommand*{\mkbibnamegiven}[1]{{#1}}
+\renewrobustcmd*{\bibinitdelim}{}
 
+%% Use the shortjournal (Journal Abbreviation field if using Zotero) instead of the full journal name
+\renewbibmacro*{journal}{%
+  \iffieldundef{shortjournal}
+    {%
+      \iffieldundef{journaltitle}
+        {}
+        {%
+          \printtext[journaltitle]
+            {%
+              \printfield[titlecase]{journaltitle}%
+              \setunit{\subtitlepunct}%
+              \printfield[titlecase]{journalsubtitle}%
+             }%
+         }%
+    }
+    {\printtext[journaltitle]{\printfield[titlecase]{shortjournal}}}%
+}
 
 \DeclareNameFormat{default}{%
   \renewcommand*{\multinamedelim}{\addsemicolon\addspace}%
