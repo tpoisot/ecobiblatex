@@ -1,0 +1,154 @@
+\ProvidesFile{prsb.bbx}[biblatex style for Proceedings of the Royal Society B]
+%% For many of the tricks used below, see stackexchange answers by user @moewe
+%% https://tex.stackexchange.com/users/35864/moewe
+
+%% Build from authoryear style (even though we use numeric cites; mods necessary below)
+\RequireBibliographyStyle{authoryear}
+
+%% General options
+\ExecuteBibliographyOptions{
+  sorting=none,
+  giveninits=true,
+  terseinits=true,
+  isbn=false,
+  maxbibnames=99,
+  alldates=year,
+  dashed=false
+}
+
+%% Borrowed and edited from numeric.bbx so that bib list is numerically listed
+\DeclareFieldFormat{labelnumberwidth}{#1.}
+\defbibenvironment{bibliography}
+{\list
+  {\printtext[labelnumberwidth]{%
+      \printfield{labelprefix}%
+      \printfield{labelnumber}}}
+  {\setlength{\labelwidth}{\labelnumberwidth}%
+    \setlength{\leftmargin}{\labelwidth}%
+    \setlength{\labelsep}{\biblabelsep}%
+    \addtolength{\leftmargin}{\labelsep}%
+    \setlength{\itemsep}{\bibitemsep}%
+    \setlength{\parsep}{\bibparsep}}%
+  \renewcommand*{\makelabel}[1]{\hss##1}}
+{\endlist}
+{\item}
+
+%% family name first in authors in refs
+\DeclareNameAlias{sortname}{family-given}
+
+%% Remove punctuation at end of citation if it ends in doi.
+\renewcommand*{\finentrypunct}{\ifboolexpr{togl {bbx:doi} and not test {\iffieldundef{doi}}}{}{\addperiod}}
+
+%% Clear fields
+\AtEveryBibitem{%
+  \clearfield{number}%
+  \ifentrytype{book}{
+    \clearfield{volume}%
+  }{}
+}
+
+%% Bold volume number
+\DeclareFieldFormat*{volume}{\mkbibbold{#1}}
+
+%% No period after date and before title, just a space
+\DeclareDelimFormat[bib,biblist]{nametitledelim}{\space}
+
+%% Plain font title for articles etc but italic for books
+\DeclareFieldFormat*{title}{#1}
+\DeclareFieldFormat*[book]{title}{\mkbibemph{#1}}
+
+%% Articles have no page number indication
+\DeclareFieldFormat*[article]{pages}{#1}
+
+%% Parentheses around doi with link in normal font
+\DeclareFieldFormat{doi}{%
+  (doi\addcolon\space
+  \ifhyperref
+    {\href{https://doi.org/#1}{#1}}
+    {#1})}
+
+%% No "in" in article and no colon after "in" otherwise
+\renewcommand*{\intitlepunct}{\space}
+\renewbibmacro*{in:}{%
+  \ifentrytype{article}
+  {}
+  {\bibstring{In}%
+    \printunit{\intitlepunct}}}
+
+%% No parentheses around date
+\renewbibmacro*{date+extradate}{%
+  \iffieldundef{labelyear}
+  {}
+  {\setunit{\addperiod\space}%
+    \printtext{%
+      \iflabeldateisdate
+      {\printdateextra}
+      {\printlabeldateextra}}}}%
+\renewbibmacro*{issue+date}{%
+  \ifboolexpr{test {\usebibmacro{bbx:ifmergeddate}}
+    and
+    test {\iffieldundef{issue}}}
+  {}
+  {\setunit{\addperiod\space}%
+    \printtext{%
+      \printfield{issue}%
+      \setunit*{\addspace}%
+      \usebibmacro{bbx:ifmergeddate}
+      {}
+      {\printdate}}}%
+  \newunit}
+
+%% Change format of editor in incollection: no '.' for eds and put eds list in parentheses
+\DefineBibliographyStrings{english}{%
+  editor           = {ed.},
+  editors          = {eds},
+}
+\DeclareNameAlias{editorin}{given-family}
+\newbibmacro*{byeditor:in}{%
+  \ifnameundef{editor}
+  {}
+  {\setunit{\addspace\bibopenparen}%
+    \usebibmacro{editorstrg}%
+      \addspace%
+      \printnames[editorin]{editor}%
+    \clearname{editor}%
+    \printunit{\bibcloseparen\addcomma\space}}}
+
+%% Reorder eds, publisher, and pages in incollection
+\DeclareBibliographyDriver{incollection}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \usebibmacro{maintitle+booktitle}%
+  \newunit\newblock
+  \usebibmacro{byeditor:in}%
+  \newunit\newblock
+  \usebibmacro{byeditor+others}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit\newblock
+  \printfield{edition}%
+  \newunit\newblock
+  \usebibmacro{publisher+location+date}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
+
+\endinput
