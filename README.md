@@ -16,4 +16,5 @@ However, the correct format was taken from the list of references in a PDF of th
 *British Ecological Society*     
 [*Trends Ecol. Evol.*](http://bit.ly/ItbUrh) - in progress    
 *Am. Nat.* - coming soon         
-*Integr. Comp. Biol.* - in progress
+*Integr. Comp. Biol.* - draft
+*Proc. R. Soc. B.* - draft
