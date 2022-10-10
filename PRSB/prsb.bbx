@@ -3,7 +3,8 @@
 %% https://tex.stackexchange.com/users/35864/moewe
 
 %% Build from authoryear style (even though we use numeric cites; mods necessary below)
-\RequireBibliographyStyle{authoryear}
+%% Note: this uses the `biblatex-ext` style to allowing using the format `titlecase:title`
+\RequireBibliographyStyle{ext-authoryear}
 
 %% General options
 \ExecuteBibliographyOptions{
@@ -11,7 +12,7 @@
   giveninits=true,
   terseinits=true,
   isbn=false,
-  maxbibnames=99,
+  maxbibnames=10,
   alldates=year,
   dashed=false
 }
@@ -47,6 +48,11 @@
   }{}
 }
 
+%% Make titles sentence Case
+\DeclareFieldFormat
+  [article,inbook,incollection,inproceedings,patent,thesis,unpublished]
+  {titlecase:title}{\MakeSentenceCase*{#1}}
+
 %% Bold volume number
 \DeclareFieldFormat*{volume}{\mkbibbold{#1}}
 
@@ -60,12 +66,20 @@
 %% Articles have no page number indication
 \DeclareFieldFormat*[article]{pages}{#1}
 
+%% make urls same font as text
+\urlstyle{same}
+
+%% let urls break at numbers and letters
+\setcounter{biburllcpenalty}{100}
+\setcounter{biburlucpenalty}{200}
+\setcounter{biburlnumpenalty}{100}
+
 %% Parentheses around doi with link in normal font
 \DeclareFieldFormat{doi}{%
   (doi\addcolon\space
   \ifhyperref
-    {\href{https://doi.org/#1}{#1}}
-    {#1})}
+    {\href{https://doi.org/#1}{\nolinkurl{#1}}}
+    {\nolinkurl{#1}})}
 
 %% No "in" in article and no colon after "in" otherwise
 \renewcommand*{\intitlepunct}{\space}
